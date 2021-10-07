@@ -5,16 +5,16 @@
  * Licensed under the MIT License
  */
 
-'use strict';
+"use strict";
 
-var isObject = require('is-extendable');
-var sortDesc = require('sort-desc');
-var bytewise = require('bytewise');
-var union = require('union-value');
-var sortAsc = require('sort-asc');
-var get = require('get-value');
+var isObject = require("is-extendable");
+var sortDesc = require("sort-desc");
+var bytewise = require("bytewise");
+var union = require("@znemz/union-value");
+var sortAsc = require("sort-asc");
+var get = require("get-value");
 
-var sortFns = {desc: sortDesc, asc: sortAsc};
+var sortFns = { desc: sortDesc, asc: sortAsc };
 
 /**
  * Expose `sort`
@@ -29,9 +29,11 @@ function sort(obj, options) {
 
   var opts = options || {};
   var prop = opts.prop;
-  var getFn = opts.get || function(val) {
-    if (prop) return get(val, prop);
-  };
+  var getFn =
+    opts.get ||
+    function (val) {
+      if (prop) return get(val, prop);
+    };
   var fn = opts.sort || sortAsc;
 
   if (Boolean(opts.sortOrder)) {
@@ -55,7 +57,7 @@ function sort(obj, options) {
   var sortBy = {};
 
   var build = keys.length === 0 ? fromObj : fromKeys;
-  build(obj, keys, tmp, sortBy, function(val) {
+  build(obj, keys, tmp, sortBy, function (val) {
     return getFn(val, prop);
   });
 
@@ -63,8 +65,11 @@ function sort(obj, options) {
     keys.sort(fn);
   }
 
-  var len = keys.length, i = 0, j = 0;
-  var res = {}, prev;
+  var len = keys.length,
+    i = 0,
+    j = 0;
+  var res = {},
+    prev;
   while (len--) {
     var key = keys[i++];
     if (prev !== key) j = 0;
@@ -79,8 +84,10 @@ function sort(obj, options) {
 function fromObj(obj, keys, tmp, sortBy, fn) {
   for (var key in obj) {
     var val = obj[key];
-    var item = isObject(val) ? (fn(val) || key) : key;
-    item = isObject(item) ? bytewise.encode(JSON.stringify(item)).toString() : item;
+    var item = isObject(val) ? fn(val) || key : key;
+    item = isObject(item)
+      ? bytewise.encode(JSON.stringify(item)).toString()
+      : item;
     union(sortBy, item, [key]);
     keys.push(item);
     tmp[key] = val;
@@ -89,7 +96,8 @@ function fromObj(obj, keys, tmp, sortBy, fn) {
 
 // build up the sorting information from the supplied keys
 function fromKeys(obj, keys, tmp, sortBy) {
-  var len = keys.length, i = 0;
+  var len = keys.length,
+    i = 0;
   while (len--) {
     var key = keys[i++];
     var val = obj[key];
