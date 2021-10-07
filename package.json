@@ -20,7 +20,8 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "better-audit": "better-npm-audit audit"
   },
   "dependencies": {
     "bytewise": "^1.1.0",
@@ -31,6 +32,7 @@
     "union-value": "^2.0.1"
   },
   "devDependencies": {
+    "better-npm-audit": "^3.3.0",
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.1.1",
     "gulp-istanbul": "^0.10.3",
