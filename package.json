@@ -1,15 +1,15 @@
 {
-  "name": "sort-object",
+  "name": "@znemz/sort-object",
   "description": "Sort the keys in an object.",
   "version": "3.0.3",
-  "homepage": "https://github.com/doowb/sort-object",
+  "homepage": "https://github.com/nmccready/sort-object",
   "author": "Brian Woodward (https://github.com/doowb)",
   "maintainers": [
     "Jon Schlinkert (https://github.com/jonschlinkert)"
   ],
-  "repository": "doowb/sort-object",
+  "repository": "nmccready/sort-object",
   "bugs": {
-    "url": "https://github.com/doowb/sort-object/issues"
+    "url": "https://github.com/nmccready/sort-object/issues"
   },
   "license": "MIT",
   "files": [
