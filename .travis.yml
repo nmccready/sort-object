@@ -1,25 +1,10 @@
 sudo: false
-# language: node_js
+language: node_js
 node_js:
   - "16"
   - "14"
   - "12"
-# matrix:
-# fast_finish: true
+matrix:
+  fast_finish: true
 
-stages:
-  - install
-  - audit
-  - test
-
-jobs:
-  include:
-    - stage: install
-      name: install
-      script: npm install
-    - stage: audit
-      name: audit
-      script: npm run better-audit --prod
-    - stage: test
-      name: test
-      script: npm test
+script: npm test && npm run better-audit --prod
