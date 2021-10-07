@@ -6,3 +6,5 @@ node_js:
   - "12"
 matrix:
   fast_finish: true
+
+script: npm test && npm run better-audit --prod
