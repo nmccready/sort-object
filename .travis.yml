@@ -6,3 +6,12 @@ node_js:
   - "12"
 matrix:
   fast_finish: true
+
+jobs:
+  include:
+    - stage: audit
+      name: audit
+      script: npm run better-audit --prod
+    - stage: test
+      name: test
+      script: npm test
